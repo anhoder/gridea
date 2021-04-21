@@ -49,12 +49,12 @@ export default class Renderer extends Model {
   }
 
   async preview() {
-    this.db.themeConfig.domain = ''
+    this.db.themeConfig.domain = '/'
     await this.renderAll()
   }
 
   async generate() {
-    this.db.themeConfig.domain = ''
+    this.db.themeConfig.domain = '/'
     await this.renderAll()
   }
 
