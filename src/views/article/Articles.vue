@@ -106,6 +106,7 @@ import { FadeTransition } from 'vue2-transitions'
 import { IPost } from '../../interfaces/post'
 import ArticleUpdate from './ArticleUpdate.vue'
 import ga from '../../helpers/analytics'
+import { MessageOptions } from 'ant-design-vue/types/message'
 
 @Component({
   components: {
@@ -189,7 +190,7 @@ export default class Articles extends Vue {
         ipcRenderer.send('app-post-delete', post)
         ipcRenderer.once('app-post-deleted', (event: IpcRendererEvent, data: any) => {
           if (data) {
-            this.$message.success(this.$t('articleDelete'))
+            this.$message.success(<MessageOptions><unknown>this.$t('articleDelete'))
             this.$bus.$emit('site-reload')
           }
         })

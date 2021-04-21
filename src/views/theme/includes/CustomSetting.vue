@@ -20,7 +20,7 @@
                   <div class="w-4 h-4 rounded-full" slot="prefix" v-if="form[item.name]" :style="{ backgroundColor: form[item.name] }"></div>
                 </a-input>
               </a-popover>
-              
+
               <!-- 带文章卡片输入 -->
               <a-popover
                 title="文章"
@@ -198,6 +198,7 @@ import MonacoMarkdownEditor from '../../../components/MonacoMarkdownEditor/Index
 import FooterBox from '../../../components/FooterBox/Index.vue'
 import ColorCard from '../../../components/ColorCard/Index.vue'
 import PostsCard from '../../../components/PostsCard/Index.vue'
+import { MessageOptions } from 'ant-design-vue/types/message'
 
 @Component({
   name: 'ThemeCustomSetting',
@@ -235,7 +236,7 @@ export default class ThemeCustomSetting extends Vue {
         link: urlJoin(this.site.setting.domain, this.site.themeConfig.postPath, post.fileName, '/'),
       }
     }).filter((post: any) => post.data.published)
-    
+
     return list
   }
 
@@ -275,7 +276,7 @@ export default class ThemeCustomSetting extends Vue {
     ipcRenderer.send('theme-custom-config-save', this.form)
     ipcRenderer.once('theme-custom-config-saved', (event: IpcRendererEvent, result: any) => {
       this.$bus.$emit('site-reload')
-      this.$message.success(this.$t('saved'))
+      this.$message.success(<MessageOptions><unknown>this.$t('saved'))
     })
   }
 
@@ -290,7 +291,7 @@ export default class ThemeCustomSetting extends Vue {
         ipcRenderer.once('theme-custom-config-saved', async (event: IpcRendererEvent, result: any) => {
           await this.$bus.$emit('site-reload')
           this.$router.push({ name: 'loading', query: { redirect: 'theme?tab=custom' } })
-          this.$message.success(this.$t('reseted'))
+          this.$message.success(<MessageOptions><unknown>this.$t('reseted'))
         })
       },
     })

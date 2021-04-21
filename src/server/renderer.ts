@@ -49,7 +49,12 @@ export default class Renderer extends Model {
   }
 
   async preview() {
-    this.db.themeConfig.domain = `http://localhost:${this.previewPort}`
+    this.db.themeConfig.domain = ''
+    await this.renderAll()
+  }
+
+  async generate() {
+    this.db.themeConfig.domain = ''
     await this.renderAll()
   }
 
@@ -273,6 +278,8 @@ export default class Renderer extends Model {
         fse.ensureDirSync(urlJoin(this.outputDir, archivePath))
       }
 
+      console.log(renderData.pagination)
+
       renderFile(renderTemplatePath, renderData)
 
       console.log('👏  PostList Page:', renderPath)
@@ -460,7 +467,7 @@ export default class Renderer extends Model {
           'tags.ejs',
         ].includes(name)
       })
-    
+
     const renderData = {
       menus: this.menuData,
       themeConfig: this.db.themeConfig,
@@ -506,6 +513,7 @@ export default class Renderer extends Model {
     fse.ensureDirSync(cssFolderPath)
 
     const lessString = fs.readFileSync(lessFilePath, 'utf8')
+    // @ts-ignore
     less.render(lessString, { filename: lessFilePath }, async (err: any, cssString: Less.RenderOutput) => {
       if (err) {
         console.log(err)
@@ -628,7 +636,7 @@ export default class Renderer extends Model {
       .map(item => item.name)
       .filter(junk.not)
       .filter((name: string) => name !== '.git')
-    
+
     try {
       needClearPath.forEach(async (name: string) => {
         fse.removeSync(urlJoin(outputDir, name))

@@ -18,7 +18,7 @@ class Analytics {
 
   constructor() {
     this.ga = new GA('UA-113307620-4', { debug: isDevelopment })
-    
+
     this.ga.set('version', (pkg as any).version)
   }
 

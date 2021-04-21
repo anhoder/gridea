@@ -133,6 +133,7 @@ import {
   DEFAULT_TAG_PATH,
 } from '../../../helpers/constants'
 import ga from '../../../helpers/analytics'
+import { MessageOptions } from 'ant-design-vue/types/message'
 
 @Component({
   name: 'ThemeBasicSetting',
@@ -183,7 +184,7 @@ export default class ThemeBasicSetting extends Vue {
     ipcRenderer.once('theme-saved', async (event: IpcRendererEvent, result: any) => {
       await this.$bus.$emit('site-reload')
       this.$router.push({ name: 'loading', query: { redirect: 'theme?tab=basic' } })
-      this.$message.success(this.$t('themeConfigSaved'))
+      this.$message.success(<MessageOptions><unknown>this.$t('themeConfigSaved'))
 
       ga.event('Theme', 'Theme - save', { evLabel: this.form.themeName })
     })

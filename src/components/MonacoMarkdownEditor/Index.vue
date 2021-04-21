@@ -58,7 +58,7 @@ export default class MonacoMarkdownEditor extends Vue {
       lineDecorationsWidth: 0,
       occurrencesHighlight: false,
       automaticLayout: true,
-      fontFamily: 'PingFang SC,-apple-system,SF UI Text,Lucida Grande,STheiti,Microsoft YaHei,sans-serif',
+      fontFamily: 'Menlo,Monaco,PingFang SC,-apple-system,SF UI Text,Lucida Grande,STheiti,Microsoft YaHei,sans-serif',
     })
 
     const extension = new MonacoMarkdown.MonacoMarkdownExtension()
@@ -92,7 +92,7 @@ export default class MonacoMarkdownEditor extends Vue {
     // const lineHeight = container.firstChild
     //   ? (container.firstChild as HTMLElement).offsetHeight
     //   : LINE_HEIGHT
-    
+
     // if (!containerHeight) {
     //   setTimeout(this.setEditorHeight, 0)
     // } else {
@@ -100,7 +100,7 @@ export default class MonacoMarkdownEditor extends Vue {
     //   const nextHeight = (this.prevLineCount > currLineCount)
     //     ? currLineCount * lineHeight
     //     : containerHeight
-      
+
     //   editorDomNode.style.height = `${nextHeight}px`
     //   editor.layout()
 

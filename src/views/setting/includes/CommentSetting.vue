@@ -29,6 +29,7 @@ import GitalkSetting from './GitalkSetting.vue'
 import DisqusSetting from './DisqusSetting.vue'
 import FooterBox from '../../../components/FooterBox/Index.vue'
 import ga from '../../../helpers/analytics'
+import { MessageOptions } from 'ant-design-vue/types/message'
 
 @Component({
   components: {
@@ -71,7 +72,7 @@ export default class CommentSetting extends Vue {
     ipcRenderer.send('comment-setting-save', form)
     ipcRenderer.once('comment-setting-saved', (event: IpcRendererEvent, result: any) => {
       this.$bus.$emit('site-reload')
-      this.$message.success(this.$t('commentSettingSuccess'))
+      this.$message.success(<MessageOptions><unknown>this.$t('commentSettingSuccess'))
 
       ga.event('Setting', 'Setting - comment-save', { evLabel: this.form.commentPlatform })
     })

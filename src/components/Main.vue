@@ -29,6 +29,12 @@
           <i class="zwicon-eye"></i>
           {{ $t('preview') }}
         </a-button>
+        <a-button class="preview-btn" block :loading="generateLoading" @click="generate">
+          <template v-if="!generateLoading">
+            <i class="zwicon-deploy"></i>
+            {{ $t('generate') }}
+          </template>
+        </a-button>
         <a-button class="sync-btn" block type="primary" :loading="publishLoading" @click="publish">
           <template v-if="!publishLoading">
             <i class="zwicon-deploy"></i>
@@ -51,6 +57,10 @@
         </keep-alive>
       </div>
     </a-layout>
+
+    <a-modal :visible="generateErrorModalVisible" :footer="null" @cancel="generateErrorModalVisible = false" :maskClosable="false">
+      🙁 {{ $t('generateError1') }} <a @click="openInBrowser('https://gridea.dev/')">FAQ</a> {{ $t('or') }} <a @click="openInBrowser('https://github.com/getgridea/gridea/issues')">Issues</a> {{ $t('generateError2') }}
+    </a-modal>
 
     <a-modal :visible="syncErrorModalVisible" :footer="null" @cancel="syncErrorModalVisible = false" :maskClosable="false">
       🙁 {{ $t('syncError1') }} <a @click="openInBrowser('https://gridea.dev/')">FAQ</a> {{ $t('or') }} <a @click="openInBrowser('https://github.com/getgridea/gridea/issues')">Issues</a> {{ $t('syncError2') }}
@@ -118,14 +128,18 @@ export default class App extends Vue {
 
   publishLoading = false
 
+  generateLoading = false
+
+  generateErrorModalVisible = false
+
   hasUpdate = false
 
   newVersion = ''
-  
+
   syncErrorModalVisible = false
 
   updateModalVisible = false
-  
+
   systemModalVisible = false
 
   updateContent = ''
@@ -137,7 +151,7 @@ export default class App extends Vue {
   get currentRouter() {
     return this.$route.path
   }
-  
+
   get sideMenus() {
     return [
       {
@@ -237,6 +251,26 @@ export default class App extends Vue {
           this.openInBrowser(`http://localhost:${port}`)
         },
       )
+    })
+  }
+
+  public generate() {
+    ipcRenderer.send('site-generate')
+    this.generateLoading = true
+
+    ga.event('Generate', 'Generate - start', { evLabel: this.site.setting.domain })
+
+    ipcRenderer.once('site-generated', (event: IpcRendererEvent, result: any) => {
+      if (result.success) {
+        this.$message.success(`🎉  ${this.$t('generateSuccess')}`)
+
+        ga.event('Generate', 'Generate - success', { evLabel: this.site.setting.domain })
+      } else {
+        this.generateErrorModalVisible = true
+
+        ga.event('Generate', 'Generate - failed', { evLabel: this.site.setting.domain })
+      }
+      this.generateLoading = false
     })
   }
 
@@ -480,7 +514,7 @@ export default class App extends Vue {
     list-style-type: none;
     font-size: 14px;
     margin: 30px 20px;
-    
+
     ul,
     ol {
       margin: 20px 20px 10px;
@@ -493,14 +527,14 @@ export default class App extends Vue {
 
   /deep/ ul > li {
       display: table-row;
-      
+
       &:before {
         content:'\25CF';
         color: #fad849;
         padding-right: 10px;
         display: table-cell;
       }
-      
+
       + li:before {
         padding-top: 10px;
       }

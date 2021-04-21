@@ -94,6 +94,7 @@ import { MenuTypes } from '../../helpers/enums'
 import { IMenu } from '../../interfaces/menu'
 import { IPost } from '../../interfaces/post'
 import ga from '../../helpers/analytics'
+import { MessageOptions } from 'ant-design-vue/types/message'
 
 interface IForm {
   name: any
@@ -189,7 +190,7 @@ export default class Menu extends Vue {
         this.menuList[this.form.index] = { ...this.form }
       }
       this.$bus.$emit('site-reload')
-      this.$message.success(this.$t('menuSuccess'))
+      this.$message.success(<MessageOptions><unknown>this.$t('menuSuccess'))
       this.visible = false
 
       ga.event('Menu', 'Menu - save', { evLabel: this.form.name })
@@ -210,7 +211,7 @@ export default class Menu extends Vue {
           this.menuList.splice(foundIndex, 1)
 
           this.$bus.$emit('site-reload')
-          this.$message.success(this.$t('menuDelete'))
+          this.$message.success(<MessageOptions><unknown>this.$t('menuDelete'))
           this.visible = false
         })
       },
@@ -221,7 +222,7 @@ export default class Menu extends Vue {
     ipcRenderer.send('menu-sort', this.menuList)
     ipcRenderer.once('menu-sorted', (event: IpcRendererEvent, result: any) => {
       this.$bus.$emit('site-reload')
-      this.$message.success(this.$t('menuSuccess'))
+      this.$message.success(<MessageOptions><unknown>this.$t('menuSuccess'))
       ga.event('Menu', 'Menu - sort', { evLabel: '' })
     })
   }
