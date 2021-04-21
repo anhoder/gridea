@@ -32,6 +32,7 @@ import { Vue, Component } from 'vue-property-decorator'
 import { State } from 'vuex-class'
 import * as path from 'path'
 import FooterBox from '../../../components/FooterBox/Index.vue'
+import { MessageOptions } from 'ant-design-vue/types/message'
 
 @Component({
   components: {
@@ -73,7 +74,7 @@ export default class FaviconSetting extends Vue {
       this.file = null
       this.$bus.$emit('site-reload')
       this.faviconPath = path.join('file://', this.site.appDir, `favicon.ico?a=${Math.random()}`)
-      this.$message.success(this.$t('faviconSettingSuccess'))
+      this.$message.success(<MessageOptions><unknown>this.$t('faviconSettingSuccess'))
     })
   }
 }

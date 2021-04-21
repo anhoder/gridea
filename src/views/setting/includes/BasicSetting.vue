@@ -118,6 +118,7 @@ import { State } from 'vuex-class'
 import FooterBox from '../../../components/FooterBox/Index.vue'
 import ga from '../../../helpers/analytics'
 import { ISetting } from '../../../interfaces/setting'
+import { MessageOptions } from 'ant-design-vue/types/message'
 
 @Component({
   components: {
@@ -235,7 +236,7 @@ export default class BasicSetting extends Vue {
     ipcRenderer.send('setting-save', form)
     ipcRenderer.once('setting-saved', (event: IpcRendererEvent, result: any) => {
       this.$bus.$emit('site-reload')
-      this.$message.success(this.$t('basicSettingSuccess'))
+      this.$message.success(<MessageOptions><unknown>this.$t('basicSettingSuccess'))
 
       ga.event('Setting', 'Setting - save', { evLabel: this.form.platform })
     })
@@ -259,11 +260,11 @@ export default class BasicSetting extends Vue {
           console.log('检测结果', result)
           this.detectLoading = false
           if (result.success) {
-            this.$message.success(this.$t('connectSuccess'))
+            this.$message.success(<MessageOptions><unknown>this.$t('connectSuccess'))
 
             ga.event('Setting', 'Setting - detect-success', { evLabel: this.form.platform })
           } else {
-            this.$message.error(this.$t('connectFailed'))
+            this.$message.error(<MessageOptions><unknown>this.$t('connectFailed'))
 
             ga.event('Setting', 'Setting - detect-failed', { evLabel: this.form.platform })
           }

@@ -32,6 +32,7 @@ import { Vue, Component } from 'vue-property-decorator'
 import { State } from 'vuex-class'
 import * as path from 'path'
 import FooterBox from '../../../components/FooterBox/Index.vue'
+import { MessageOptions } from 'ant-design-vue/types/message'
 
 @Component({
   components: {
@@ -73,7 +74,7 @@ export default class AvatarSetting extends Vue {
       this.file = null
       this.$bus.$emit('site-reload')
       this.avatarPath = path.join('file://', this.site.appDir, 'images', `avatar.png?a=${Math.random()}`)
-      this.$message.success(this.$t('avatarSettingSuccess'))
+      this.$message.success(<MessageOptions><unknown>this.$t('avatarSettingSuccess'))
     })
   }
 }

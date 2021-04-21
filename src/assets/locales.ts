@@ -1,6 +1,7 @@
 const message = {
   zhHans: {
     preview: '预 览',
+    generate: '生 成',
     syncSite: '同 步',
     newVersion: '有新版本',
     article: '文 章',
@@ -15,6 +16,10 @@ const message = {
     syncSuccess: '同步成功啦！',
     syncError1: '同步遇到了错误，请查阅',
     syncError2: '来寻找解决方案',
+    generateWarning: '必须完成配置才能生成哦！',
+    generateSuccess: '生成成功啦！',
+    generateError1: '生成遇到了错误，请查阅',
+    generateError2: '来寻找解决方案',
     newVersionTips: '有新版本发布，快去下载新版本吧！',
     newArticle: '新文章',
     publish: '发布',

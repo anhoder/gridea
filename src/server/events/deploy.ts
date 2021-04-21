@@ -7,7 +7,7 @@ import NetlifyDeploy from '../plugins/deploys/netlify'
 export default class DeployEvents {
   constructor(appInstance: any) {
     const { platform } = appInstance.db.setting
-    
+
     const deploy = new Deploy(appInstance)
     const sftp = new SftpDeploy(appInstance)
     const renderer = new Renderer(appInstance)
@@ -27,11 +27,11 @@ export default class DeployEvents {
         'sftp': sftp,
         'netlify': netlify,
       } as any)[platform]
-      
+
       // render
       renderer.db.themeConfig.domain = renderer.db.setting.domain
       await renderer.renderAll()
-      
+
       // publish
       const result = await client.publish()
       event.sender.send('site-published', result)

@@ -20,6 +20,7 @@ import {
 } from 'electron'
 import { Vue, Component } from 'vue-property-decorator'
 import { State } from 'vuex-class'
+import { MessageOptions } from 'ant-design-vue/types/message'
 
 @Component
 export default class System extends Vue {
@@ -40,12 +41,12 @@ export default class System extends Vue {
     ipcRenderer.send('app-source-folder-setting', this.currentFolderPath)
     ipcRenderer.once('app-source-folder-set', (event: IpcRendererEvent, data: any) => {
       if (data) {
-        this.$message.success(this.$t('saved'))
+        this.$message.success(<MessageOptions><unknown>this.$t('saved'))
         this.$bus.$emit('site-reload')
         remote.app.relaunch()
         remote.app.quit()
       } else {
-        this.$message.error(this.$t('saveError'))
+        this.$message.error(<MessageOptions><unknown>this.$t('saveError'))
       }
     })
   }

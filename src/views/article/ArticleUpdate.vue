@@ -231,6 +231,7 @@ import { Site } from '../../store/modules/site'
 import { UrlFormats } from '../../helpers/enums'
 import shortcutKeys from '../../helpers/shortcut-keys'
 import ga from '../../helpers/analytics'
+import { MessageOptions } from 'ant-design-vue/types/message'
 
 @Component({
   components: {
@@ -467,12 +468,12 @@ export default class ArticleUpdate extends Vue {
     this.buildFileName()
     const valid = this.checkArticleUrlValid()
     if (!valid) {
-      this.$message.error(this.$t('postUrlRepeatTip'))
+      this.$message.error(<MessageOptions><unknown>this.$t('postUrlRepeatTip'))
       return
     }
 
     if (this.form.fileName.includes('/')) {
-      this.$message.error(this.$t('postUrlIncludeTip'))
+      this.$message.error(<MessageOptions><unknown>this.$t('postUrlIncludeTip'))
       return
     }
 

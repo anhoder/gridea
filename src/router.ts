@@ -61,7 +61,7 @@ const router = new Router({
 })
 
 router.afterEach((to, from) => {
-  ga.pageView(to.fullPath, to.name)
+  ga.pageView(to.fullPath, <string>to.name)
 })
 
 export default router
