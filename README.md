@@ -1,3 +1,5 @@
+# Fork from gridea, add _`generate`_
+
 <div align="center">
   <a href="https://gridea.dev">
     <img src="public/app-icons/gridea.png"  width="80px" height="80px">
@@ -9,7 +11,7 @@
     A static blog writing client
   </h3>
 
-  [Download](https://github.com/getgridea/gridea/releases) | [Homepage](https://gridea.dev/)
+[Download](https://github.com/getgridea/gridea/releases) | [Homepage](https://gridea.dev/)
 
   <a href="https://github.com/getgridea/gridea/releases/latest">
     <img src="https://img.shields.io/github/release/getgridea/gridea.svg?style=flat-square" alt="">
@@ -36,7 +38,7 @@ English | [Русский](https://github.com/getgridea/gridea/blob/master/READM
 
 👏  Welcome to use **Gridea**！
 
-✍️  **Gridea** A static blog writing client. You can use it to record your life, mood, knowledge, notes and ideas...
+✍️ **Gridea** A static blog writing client. You can use it to record your life, mood, knowledge, notes and ideas...
 
 
 ## Features👇
@@ -48,7 +50,7 @@ English | [Русский](https://github.com/getgridea/gridea/blob/master/READM
 
 📋  Customize menus and even create external link menus
 
-💻  Use this client on **Windows** or **MacOS**  or **Linux**
+📋 Customize menus and even create external link menus
 
 🌎  Use **Github Pages** or **Coding Pages** to show the world that more platforms will be supported in the future
 
@@ -60,20 +62,22 @@ English | [Русский](https://github.com/getgridea/gridea/blob/master/READM
 
 🖥  Customize the source folder and synchronize multiple devices using OneDrive, iCloud, Dropbox, etc.
 
+🖥 Customize the source folder and synchronize multiple devices using OneDrive, iCloud, Dropbox, etc.
 
-🌱  Of course **Gridea** is still very young and has many shortcomings, but please believe it will keep moving forward 🏃
+🌱 Of course **Gridea** is still very young and has many shortcomings, but please believe it will keep moving forward 🏃
 
 In the future, it will surely become your inseparable partner
 
 Give full play to your talents！
 
-😘  Enjoy~
+😘 Enjoy~
 
 
 ## Development
+
 If you want to contribute code, please check the [Contribution Guide](https://github.com/getgridea/gridea/wiki/%E8%B4%A1%E7%8C%AE%E6%8C%87%E5%8D%97) in advance.
 
-``` shell
+```shell
 $ # Node version > v10.0.0 is requied
 $ git clone https://github.com/getgridea/gridea.git
 $ cd gridea
@@ -82,12 +86,13 @@ $ yarn electron:serve
 $ yarn electron:build
 ```
 
-
 ## Contact
-[Telegram Channel](https://t.me/joinchat/AAAAAEj82_lma0Y1wmyqUQ) | [Telegram Group](https://t.me/joinchat/IDY0ahRqb8NPodv95BNpBg)  | QQ 1 Group: 970332209 | QQ 2 Group: 923131213 | Author Twitter: @EryouHao
+
+[Telegram Channel](https://t.me/joinchat/AAAAAEj82_lma0Y1wmyqUQ) | [Telegram Group](https://t.me/joinchat/IDY0ahRqb8NPodv95BNpBg) | QQ 1 Group: 970332209 | QQ 2 Group: 923131213 | Author Twitter: @EryouHao
 
 
 ## Example Screenshots
+
 <div align="center">
   <img src="./files/themes.png">
 </div>
@@ -98,6 +103,7 @@ We welcome all contributions. You can submit any ideas as [pull requests](https:
 
 
 ## Donation
+
 <div>
   <img src="./files/wechat.png" width="240px">
 </div>
