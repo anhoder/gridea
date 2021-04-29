@@ -7,6 +7,7 @@ import moment from 'moment'
 import less from 'less'
 import { Feed } from 'feed'
 import junk from 'junk'
+import * as electron from 'electron'
 import { wordCount, timeCalc } from '../helpers/words-count'
 import Model from './model'
 import ContentHelper from '../helpers/content-helper'
@@ -49,12 +50,12 @@ export default class Renderer extends Model {
   }
 
   async preview() {
-    this.db.themeConfig.domain = ''
+    this.db.themeConfig.domain = '/'
     await this.renderAll()
   }
 
   async generate() {
-    this.db.themeConfig.domain = ''
+    this.db.themeConfig.domain = '/'
     await this.renderAll()
   }
 

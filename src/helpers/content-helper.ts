@@ -21,6 +21,9 @@ export default class ContentHelper {
    */
   changeImageUrlLocalToDomain(content: string, domainPath: string) {
     domainPath = domainPath.replace(/\\/g, '/')
+    if (domainPath.length > 0 && domainPath[domainPath.length - 1] === '/') {
+      domainPath = domainPath.substr(0, domainPath.length - 1)
+    }
     return content.replace(this.localReg, `(${domainPath}/post-images/`)
   }
 
@@ -45,6 +48,9 @@ export default class ContentHelper {
    * 将 feature 本地图片路径，变更为线上路径
    */
   changeFeatureImageUrlLocalToDomain(content: string, domainPath: string) {
+    if (domainPath.length > 0 && domainPath[domainPath.length - 1] === '/') {
+      domainPath = domainPath.substr(0, domainPath.length - 1)
+    }
     let url = content.replace(this.featureLocalReg, `${domainPath}/post-images/`)
     url = url.replace(/\\/g, '/')
     return url
