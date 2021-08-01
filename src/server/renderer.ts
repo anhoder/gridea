@@ -636,7 +636,7 @@ export default class Renderer extends Model {
     const needClearPath = files
       .map(item => item.name)
       .filter(junk.not)
-      .filter((name: string) => name !== '.git')
+      .filter((name: string) => name.length > 0 && name[0] !== '.')
 
     try {
       needClearPath.forEach(async (name: string) => {
