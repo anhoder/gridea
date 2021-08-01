@@ -42,7 +42,6 @@
           </template>
         </a-button>
         <div class="version-container" :class="{ 'version-dot': hasUpdate }">
-          <i class="ri-equalizer-line text-base" @click="systemModalVisible = true"></i>
           <i class="ri-earth-line web-btn" @click="goWeb" v-if="site.setting.domain"></i>
           <a-tooltip :title="`🌟 ${$t('starSupport')}`">
             <i class="ri-github-line text-base" @click="handleGithubClick"></i>
@@ -84,16 +83,6 @@
         {{ log.message }}
       </pre>
     </a-modal>
-
-    <a-drawer
-      title=""
-      placement="bottom"
-      height="100%"
-      @close="systemModalVisible = false"
-      :visible="systemModalVisible"
-    >
-      <app-system />
-    </a-drawer>
 
   </a-layout>
 </template>
@@ -139,8 +128,6 @@ export default class App extends Vue {
   syncErrorModalVisible = false
 
   updateModalVisible = false
-
-  systemModalVisible = false
 
   updateContent = ''
 
