@@ -114,9 +114,8 @@
         @close="previewVisible = false"
         width="800"
         :wrapStyle="{
-          height: 'calc(100% - 108px)',
+          height: '100%',
           overflow: 'auto',
-          paddingBottom: '108px',
           zIndex: 1025,
         }"
         title=" "

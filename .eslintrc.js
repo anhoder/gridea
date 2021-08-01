@@ -67,6 +67,9 @@ module.exports = {
     'linebreak-style': 0,
   },
   parserOptions: {
-    parser: '@typescript-eslint/parser',
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      legacyDecorators: true,
+    },
   },
-}
+};
